@@ -1,0 +1,32 @@
+{
+  "name": "node-basic-sql-abfragen",
+  "version": "1.0.0",
+  "description": "Uma implementação simples de SQL no Node",
+  "main": "-",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseph-tonete/Node-Basic-SQL-Abfragen.git"
+  },
+  "keywords": [
+    "node",
+    "sql",
+    "library",
+    "learning"
+  ],
+  "author": "Joseph Tonete",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joseph-tonete/Node-Basic-SQL-Abfragen/issues"
+  },
+  "homepage": "https://github.com/joseph-tonete/Node-Basic-SQL-Abfragen#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "dotevn": "^0.0.1-security",
+    "express": "^5.2.1",
+    "pg": "^8.16.3"
+  }
+}
