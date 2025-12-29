@@ -10,10 +10,14 @@ export async function getBooks(req, res, next) {
 }
 
 export async function postBook(req, res, next) {
-    try {
-        const book = await createBook(req.body)
-        res.status(201).json(book)
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const book = await createBook({
+      ...req.body,
+      createdByAdminId: req.admin.id
+    });
+
+    res.status(201).json(book);
+  } catch (err) {
+    next(err);
+  }
 }
