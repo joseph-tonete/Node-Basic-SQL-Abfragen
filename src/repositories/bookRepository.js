@@ -11,7 +11,7 @@ export async function findAllBooks() {
 
 export async function insertNewBook({
     isbn, 
-    created_by_admin_id, 
+    createdByAdminId, 
     language, 
     publisher, 
     title, 
@@ -38,7 +38,7 @@ export async function insertNewBook({
         `,
         [
             isbn, 
-            created_by_admin_id, 
+            createdByAdminId, 
             language, 
             publisher, 
             title, 

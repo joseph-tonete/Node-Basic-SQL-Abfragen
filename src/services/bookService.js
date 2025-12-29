@@ -16,7 +16,7 @@ export async function createBook(bookData){
         throw err;
     }
 
-    if (!bookData.created_by_admin_id) {
+    if (!bookData.createdByAdminId) {
         const err = new Error("Admin user is required");
         err.statusCode = 400;
         throw err;
