@@ -1,4 +1,4 @@
-import { findAllBooks, insertNewBook } from "../repositories/bookRepository.js"
+import { findAllBooks, insertNewBook, updateBookById, deleteBookById } from "../repositories/bookRepository.js"
 
 export async function listBooks() {
     //business logic lives here
@@ -39,4 +39,36 @@ export async function createBook(bookData){
 
         throw err
     }
+}
+
+export async function updateBook(bookData){
+    if(!bookData.id){
+        const err = new Error("Id is required")
+        err.statusCode = 400
+        throw err
+    }
+
+    try {
+        return await updateBookById(bookData)
+    } catch (err) {
+        throw err
+    }
+}
+
+export async function deleteBook(bookData){
+    if(!bookData.id){
+        const err = new Error("Id is required")
+        err.statusCode = 400
+        throw err
+    }
+
+    const deletedCount = await deleteBookById(bookData.id)
+
+    if (deletedCount === 0) {
+        const err = new Error("Book not found")
+        err.statusCode = 404
+        throw err
+    }
+
+    return
 }

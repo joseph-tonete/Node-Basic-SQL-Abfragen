@@ -1,4 +1,4 @@
-import { listBooks, createBook } from "../services/bookService.js";
+import { listBooks, createBook, updateBook, deleteBook } from "../services/bookService.js";
 
 export async function getBooks(req, res, next) {
     try {
@@ -17,6 +17,27 @@ export async function postBook(req, res, next) {
     });
 
     res.status(201).json(book);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function putBook(req, res, next) {
+  try {
+    const book = await updateBook({
+      id: req.params.id,
+      ...req.body
+    });
+    res.json(book);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function delBook(req, res, next) {
+  try {
+    await deleteBook({ id: req.params.id });
+    res.status(204).send();
   } catch (err) {
     next(err);
   }
