@@ -77,7 +77,6 @@ export async function updateBookById({
         updated_at = NOW()
         WHERE id = $1
         RETURNING *;
-        
         `,
         [
             id,
@@ -95,7 +94,7 @@ export async function updateBookById({
 }
 
 export async function deleteBookById(id) {
-  const result = await pool.query(
+  const { rows } = await pool.query(
     `
     DELETE FROM books
     WHERE id = $1
@@ -104,5 +103,5 @@ export async function deleteBookById(id) {
     [id]
   );
 
-  return result.rowCount;
+  return rows[0];
 }
