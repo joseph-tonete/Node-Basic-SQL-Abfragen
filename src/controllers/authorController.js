@@ -1,4 +1,13 @@
-import { listAuthors, createAuthor, updateAuthor, deleteAuthor } from "../services/authorService.js";
+import { listAuthor, listAuthors, createAuthor, updateAuthor, deleteAuthor } from "../services/authorService.js";
+
+export async function getAuthor(req, res, next){
+    try {
+        const author = await listAuthor({id: req.params.id})
+        res.json(author)
+    } catch (err) {
+        next(err)
+    }
+}
 
 export async function getAuthors(req, res, next){
     try {

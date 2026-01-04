@@ -1,4 +1,13 @@
-import { listBooks, createBook, updateBook, deleteBook } from "../services/bookService.js";
+import { listBook, listBooks, createBook, updateBook, deleteBook } from "../services/bookService.js";
+
+export async function getBook(req, res, next){
+  try {
+    const book = await listBook({id: req.params.id})
+    res.json(book)
+  } catch (err) {
+    next(err)
+  }
+}
 
 export async function getBooks(req, res, next) {
     try {

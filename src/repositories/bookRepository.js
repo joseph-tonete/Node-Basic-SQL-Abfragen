@@ -1,5 +1,17 @@
 import pool from "../config/db.js"
 
+export async function findBookById(id){
+    const { rows } = await pool.query(
+        `
+        SELECT *
+        FROM books
+        WHERE id = $1
+        `, 
+        [id]    
+    )
+    return rows[0]
+}
+
 export async function findAllBooks() {
     const { rows } = await pool.query(`
         SELECT id, isbn, title, year

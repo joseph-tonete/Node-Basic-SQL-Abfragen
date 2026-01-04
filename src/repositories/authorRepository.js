@@ -1,5 +1,17 @@
 import pool from "../config/db.js"
 
+export async function findAuthor(id){
+    const { rows } = await pool.query(
+        `
+        SELECT *
+        FROM authors
+        WHERE id = $1
+        `,
+        [id]
+    )
+    return rows[0]
+}
+
 export async function findAllAuthors(){
     const { rows } = await pool.query(
         `

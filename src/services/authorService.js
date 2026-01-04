@@ -1,4 +1,22 @@
-import { findAllAuthors, insertNewAuthor, updateAuthorById, deleteAuthorById } from "../repositories/authorRepository.js"
+import { findAuthor, findAllAuthors, insertNewAuthor, updateAuthorById, deleteAuthorById } from "../repositories/authorRepository.js"
+
+export async function listAuthor(authorData){
+    if(!authorData.id){
+        const err = new Error("Id is required")
+        err.statusCode = 400
+        throw err
+    }
+
+    const author = await findAuthor(authorData.id)
+
+    if (!author) { 
+        const err = new Error("Author not found")
+        err.statusCode = 404
+        throw err
+    }
+
+    return author
+}
 
 export async function listAuthors(){
 

@@ -1,4 +1,4 @@
-import { findAllBooks, insertNewBook, updateBookById, deleteBookById } from "../repositories/bookRepository.js"
+import { findBookById, findAllBooks, insertNewBook, updateBookById, deleteBookById } from "../repositories/bookRepository.js"
 
 export async function listBooks() {
     //business logic lives here
@@ -7,6 +7,24 @@ export async function listBooks() {
 
     const books = await findAllBooks()
     return books
+}
+
+export async function listBook(bookData){
+    if (!bookData.id){
+        const err = new Error("Id is required")
+        err.statusCode = 400
+        throw err
+    }
+
+    const book = await findBookById(bookData.id)
+
+    if (!book) {
+        const err = new Error("Book not found")
+        err.statusCode = 404
+        throw err
+    }
+
+    return book
 }
 
 export async function createBook(bookData){

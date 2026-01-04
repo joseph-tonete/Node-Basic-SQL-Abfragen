@@ -1,10 +1,12 @@
 import { Router } from "express"
-import { getAuthors, postAuthor, putAuthor, delAuthor } from "../controllers/authorController.js"
+import { getAuthor, getAuthors, postAuthor, putAuthor, delAuthor } from "../controllers/authorController.js"
 import authMiddleware from "../middlewares/authMiddleware.js"
 
 const router = Router()
 
 router.get("/", getAuthors)
+
+router.get("/:id", getAuthor)
 
 router.post("/", authMiddleware, postAuthor)
 
