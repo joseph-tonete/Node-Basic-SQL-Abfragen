@@ -99,6 +99,7 @@ export async function deleteBookById(id) {
     `
     DELETE FROM books
     WHERE id = $1
+    RETURNING id;
     `,
     [id]
   );
