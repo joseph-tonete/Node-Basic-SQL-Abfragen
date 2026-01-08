@@ -37,7 +37,7 @@ export async function putAuthor(req, res, next){
     } catch (err) {
         next(err)
     }
-}   
+}
 
 export async function delAuthor(req, res, next){
     try {
