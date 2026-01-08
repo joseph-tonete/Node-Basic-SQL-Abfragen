@@ -2,6 +2,7 @@ import express from "express"
 import bookRoutes from "./routes/bookRoutes.js"
 import authorRoutes from "./routes/authorRoutes.js"
 import bookAuthorRoutes from "./routes/bookAuthorRoutes.js"
+import categoryRoutes from "./routes/categoryRoutes.js"
 import authRoutes from "./routes/authRoutes.js"
 import errorHandler from "./middlewares/errorHandler.js"
 
@@ -14,6 +15,8 @@ app.use("/books", bookRoutes)
 app.use("/books", bookAuthorRoutes)
 
 app.use("/authors", authorRoutes)
+
+app.use("/categories", categoryRoutes)
 
 app.use("/auth", authRoutes)
 
