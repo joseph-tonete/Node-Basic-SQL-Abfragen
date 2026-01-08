@@ -1,6 +1,6 @@
 import pool from "../config/db.js"
 
-export async function findAuthor(id){
+export async function findAuthorById(id){
     const { rows } = await pool.query(
         `
         SELECT *

@@ -1,4 +1,4 @@
-import { findAuthor, findAllAuthors, insertNewAuthor, updateAuthorById, deleteAuthorById } from "../repositories/authorRepository.js"
+import { findAuthorById, findAllAuthors, insertNewAuthor, updateAuthorById, deleteAuthorById } from "../repositories/authorRepository.js"
 
 export async function listAuthor(authorData){
     if(!authorData.id){
@@ -7,7 +7,7 @@ export async function listAuthor(authorData){
         throw err
     }
 
-    const author = await findAuthor(authorData.id)
+    const author = await findAuthorById(authorData.id)
 
     if (!author) { 
         const err = new Error("Author not found")
