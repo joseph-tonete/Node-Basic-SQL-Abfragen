@@ -23,13 +23,15 @@ export async function findAllAuthors(){
     return rows
 }
 
-export async function insertNewAuthor({
-    name,
-    birth_year,
-    death_year,
-    country,
-    wikipedia_url
-}) {
+export async function insertNewAuthor(
+    {
+        name,
+        birth_year,
+        death_year,
+        country,
+        wikipedia_url
+    }
+    ) {
     const { rows } = await pool.query(
         `
         INSERT INTO authors (
@@ -41,24 +43,27 @@ export async function insertNewAuthor({
         )
         VALUES ( $1, $2, $3, $4, $5)
         RETURNING *
-        `, [
+        `, 
+        [
             name,
             birth_year,
             death_year,
             country,
             wikipedia_url
         ])
-        return rows[0]
+    return rows[0]
 }
 
-export async function updateAuthorById({
-    id,
-    name,
-    birth_year,
-    death_year,
-    country,
-    wikipedia_url
-}) {
+export async function updateAuthorById(
+    {
+        id,
+        name,
+        birth_year,
+        death_year,
+        country,
+        wikipedia_url
+    }
+    ) {
     const { rows } = await pool.query(
         `
         UPDATE authors
@@ -70,7 +75,8 @@ export async function updateAuthorById({
         wikipedia_url = COALESCE($6, wikipedia_url)
         WHERE id = $1
         RETURNING *
-        `, [
+        `, 
+        [
             id,
             name,
             birth_year,
@@ -78,7 +84,7 @@ export async function updateAuthorById({
             country,
             wikipedia_url
         ])
-        return rows[0]
+    return rows[0]
 }
 
 export async function deleteAuthorById(id){

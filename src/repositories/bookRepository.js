@@ -13,7 +13,8 @@ export async function findBookById(id){
 }
 
 export async function findAllBooks() {
-    const { rows } = await pool.query(`
+    const { rows } = await pool.query(
+        `
         SELECT id, isbn, title, year
         FROM books
         ORDER BY created_at DESC
@@ -21,17 +22,19 @@ export async function findAllBooks() {
     return rows
 }
 
-export async function insertNewBook({
-    isbn, 
-    createdByAdminId, 
-    language, 
-    publisher, 
-    title, 
-    subtitle, 
-    summary, 
-    edition, 
-    year
-    }) {
+export async function insertNewBook(
+    {
+        isbn, 
+        createdByAdminId, 
+        language, 
+        publisher, 
+        title, 
+        subtitle, 
+        summary, 
+        edition, 
+        year
+    }
+    ) {
     const { rows } = await pool.query(
         `
         INSERT INTO books (
@@ -63,17 +66,19 @@ export async function insertNewBook({
     return rows[0]
 }
 
-export async function updateBookById({
-    id,
-    isbn,
-    language,
-    publisher,
-    title,
-    subtitle,
-    summary,
-    edition,
-    year
-}){
+export async function updateBookById(
+    {
+        id,
+        isbn,
+        language,
+        publisher,
+        title,
+        subtitle,
+        summary,
+        edition,
+        year
+    }
+    ){
     const { rows } = await pool.query(
         `
         UPDATE books

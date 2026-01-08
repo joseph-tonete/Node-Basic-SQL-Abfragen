@@ -1,20 +1,28 @@
 import pool from "../config/db.js"
 
 export async function addAuthorToBook(bookId, authorId) {
-    await pool.query(`
+    await pool.query(
+        `
         INSERT INTO book_authors (book_id, author_id)
         VALUES ($1, $2)
         `,
-        [bookId, authorId]
+        [
+            bookId, 
+            authorId
+        ]
     )
 }
 
 export async function removeAuthorFromBook(bookId, authorId){
-    const { rowCount } = await pool.query(`
+    const { rowCount } = await pool.query(
+        `
         DELETE FROM book_authors
         WHERE book_id = $1 AND author_id = $2
         `,
-        [bookId, authorId]
+        [
+            bookId, 
+            authorId
+        ]
     )
     return rowCount
 }
