@@ -60,7 +60,7 @@ export async function updateAuthor(authorData){
 
         return updated
 
-    } catch(err) {
+    } catch {
         throw err
     }
 }

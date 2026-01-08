@@ -20,7 +20,8 @@ export async function removeAuthorFromBook(bookId, authorId){
 }
 
 export async function listAuthorsByBook(bookId){
-    const { rows } = await pool.query(`
+    const { rows } = await pool.query(
+        `
         SELECT a.*
         FROM authors a
         JOIN book_authors ba ON ba.author_id = a.id

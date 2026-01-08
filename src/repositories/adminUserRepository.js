@@ -10,6 +10,5 @@ export async function findAdminByUsername(username) {
         `,
         [username]
     )
-    
     return rows[0]
 }

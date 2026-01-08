@@ -68,7 +68,7 @@ export async function updateBook(bookData){
 
     try {
         return await updateBookById(bookData)
-    } catch (err) {
+    } catch {
         throw err
     }
 }
