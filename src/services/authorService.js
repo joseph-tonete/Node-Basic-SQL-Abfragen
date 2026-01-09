@@ -19,7 +19,6 @@ export async function listAuthor(authorData){
 }
 
 export async function listAuthors(){
-
     const authors = await findAllAuthors()
     return authors
 }
@@ -49,20 +48,16 @@ export async function updateAuthor(authorData){
         throw err
     }
 
-    try {
-        const updated = await updateAuthorById(authorData)
+    const updated = await updateAuthorById(authorData)
 
-        if (!updated){
-            const err = new Error("Author not found")
-            err.statusCode = 404
-            throw err
-        }
-
-        return updated
-
-    } catch {
+    if (!updated){
+        const err = new Error("Author not found")
+        err.statusCode = 404
         throw err
     }
+
+    return updated
+
 }
 
 export async function deleteAuthor(authorData){
