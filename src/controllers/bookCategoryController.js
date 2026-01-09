@@ -12,7 +12,7 @@ export async function getCategoriesFromBook(req, res, next) {
 export async function postBookCategory(req, res, next) {
     try {
         await attachCategory(req.params.bookId, req.params.categoryId)
-        res.status(204).send()
+        res.status(201).send()
     } catch (err) {
         next(err)
     }

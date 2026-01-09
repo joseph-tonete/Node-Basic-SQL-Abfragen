@@ -42,6 +42,8 @@ export async function detachAuthor(bookId, authorId) {
         err.statusCode = 404
         throw err
     }
+
+    return
 }
 
 export async function listAuthorsByBookService(bookId) {

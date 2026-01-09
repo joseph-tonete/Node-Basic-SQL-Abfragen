@@ -38,7 +38,7 @@ export async function createAuthor(authorData){
             err.statusCode = 409
             err.message = "Author already exists"
         }
-        throw err // Do I need to catch and then throw the error?
+        throw err 
     }
 }
 

@@ -61,11 +61,7 @@ export async function updateBook(bookData){
         throw err
     }
 
-    try {
-        return await updateBookById(bookData)
-    } catch {
-        throw err
-    }
+    return await updateBookById(bookData)
 }
 
 export async function deleteBook(bookData){

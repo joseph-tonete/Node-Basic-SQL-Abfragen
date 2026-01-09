@@ -11,11 +11,7 @@ export async function createCategorie(categoryData){
         throw err
     }
 
-    try {
-        return await insertNewCategory(categoryData.name)
-    } catch {
-        throw err
-    }
+    return await insertNewCategory(categoryData.name)
 }
 
 export async function updateCategory(categoryData){
@@ -31,11 +27,7 @@ export async function updateCategory(categoryData){
         throw err
     }
 
-    try {
-        return await updateCategoryById(categoryData)
-    } catch {
-        throw err
-    }
+    return await updateCategoryById(categoryData)
 }
 
 export async function deleteCategory(categoryData){
@@ -45,9 +37,7 @@ export async function deleteCategory(categoryData){
         throw err
     }
 
-    try {
-        return await deleteCategoryById(categoryData.id)
-    } catch {
-        throw err
-    }
+    await deleteCategoryById(categoryData.id)
+
+    return 
 }

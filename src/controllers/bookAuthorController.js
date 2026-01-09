@@ -12,7 +12,7 @@ export async function getAuthorsFromBook(req, res, next){
 export async function postBookAuthor(req, res, next){
     try {
         await attachAuthor(req.params.bookId, req.params.authorId)
-        res.status(204).send()
+        res.status(201).send()
     } catch (err) {
         next(err)
     }

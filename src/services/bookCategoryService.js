@@ -41,6 +41,8 @@ export async function detachCategory(bookId, categoryId){
         err.statusCode = 404
         throw err
     }
+
+    return
 }
 
 export async function listCategoriesByBookService(bookId){
