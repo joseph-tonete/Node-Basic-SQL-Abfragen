@@ -1,4 +1,6 @@
 import { findBookById, findAllBooks, insertNewBook, updateBookById, deleteBookById } from "../repositories/bookRepository.js"
+import fs from "fs"
+import path from "path"
 
 export async function listBooks() {
     return await findAllBooks()
@@ -77,6 +79,12 @@ export async function deleteBook(bookData){
         const err = new Error("Book not found")
         err.statusCode = 404
         throw err
+    }
+
+    const dirPath = path.join("uploads", "books", String(bookData.id))
+
+    if (fs.existsSync(dirPath)) {
+        fs.rmSync(dirPath, { recursive: true, force: true })
     }
 
     return
