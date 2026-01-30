@@ -1,4 +1,5 @@
 import express from "express"
+import cors from 'cors'
 
 import bookRoutes from "./routes/bookRoutes.js"
 import authorRoutes from "./routes/authorRoutes.js"
@@ -11,6 +12,13 @@ import authRoutes from "./routes/authRoutes.js"
 import errorHandler from "./middlewares/errorHandler.js"
 
 const app = express()
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+}
+
+app.use(cors(corsOptions))
 
 app.use(express.json())
 
