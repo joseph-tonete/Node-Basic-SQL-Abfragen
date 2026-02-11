@@ -12,7 +12,7 @@ function Header({isLogged, setIsLogged, name, setModalLogin}){
                 <div className='grow w-full flex flex-row justify-start'>
                     {isLogged && <p className='font-serif text-white text-2xl'>Bem vindo,<br />{name}</p>}
                 </div>
-                <div className='grow w-full'>
+                <div className='min-w-98'>
                     <img 
                     className='w-98 h-18'
                     src={logo} alt="Logo"/>

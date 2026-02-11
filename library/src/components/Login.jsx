@@ -10,26 +10,30 @@ import LineTitle from './LineTitle'
 // Importação de bibliotecas
 import { useState, useEffect } from 'react'
 
-function Login({setModalLogin, setName, isLogged, setIsLogged}){
+function Login({setModalLogin, setName, isLogged, setIsLogged, setToken}){
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const [errorMessage, setErrorMessage] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         if(!isLogged){
             setUsername('')
             setPassword('')
             setName('')
+            sessionStorage.clear()
         }
     },[isLogged])
 
     const handleLogin = async () => {
         if(!username || !password){
             setErrorMessage("Username e password devem ser informados.")
+            return
         }
 
+        setIsLoading(true)
         try {
             const response = await fetch('http://localhost:8080/auth/login', {
                 method: 'POST',
@@ -43,7 +47,11 @@ function Login({setModalLogin, setName, isLogged, setIsLogged}){
                 // 1. Update the state in App.js through the props
                 setName(username); 
                 setIsLogged(true);
-                
+                setToken(data)
+
+                sessionStorage.setItem('token', data)
+                sessionStorage.setItem('name', username)
+
                 // 2. Close the modal
                 setModalLogin(false);
             } else {
@@ -51,6 +59,8 @@ function Login({setModalLogin, setName, isLogged, setIsLogged}){
             }
         } catch (error) {
             console.error("Erro ao conectar com o servidor", error);
+        } finally {
+            setIsLoading(false)
         }
     };
 
@@ -84,7 +94,7 @@ function Login({setModalLogin, setName, isLogged, setIsLogged}){
                     >{errorMessage}</p>
                 </div>
                 <div className="flex flex-row justify-end">
-                    <BodyButton onclick={() => {handleLogin()}}>Login</BodyButton>
+                    <BodyButton onclick={() => {handleLogin()}} isLoading={isLoading}>Login</BodyButton>
                 </div>
             </div>
         </div>

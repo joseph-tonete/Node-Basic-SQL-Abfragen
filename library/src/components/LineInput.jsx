@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 function LineInput({placeholder, value, onchange, isSecret}) {
 
-    const [showPass, setShowPass] = useState(false)
+    const [showPass, setShowPass] = useState(isSecret ? false : true)
 
     return (
         <div className="flex flex-row w-full border-b-red-800 border-2 border-l-0 border-r-0 border-t-0">
