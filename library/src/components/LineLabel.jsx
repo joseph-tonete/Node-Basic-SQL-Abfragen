@@ -1,7 +1,7 @@
 
 function LineLabel({children}){
     return (
-        <label className="font-serif text-[24px]">{children}</label>
+        <label className="font-serif text-[24px] text-nowrap">{children}</label>
     )
 }
 

@@ -10,21 +10,21 @@ function LineInput({placeholder, value, onchange, isSecret}) {
         <div className="flex flex-row w-full border-b-red-800 border-2 border-l-0 border-r-0 border-t-0">
             <input 
             type={showPass ? "text" : "password"} 
-            className="w-full placeholder:text-gray-400 placeholder:italic  font-mono outline-0" 
+            className="w-full placeholder:text-gray-400 placeholder:italic  font-mono outline-0 text-xl indent-1" 
             placeholder={placeholder}
             value={value}
             onChange={onchange}
             />
             {
                 isSecret &&
-                <img 
-                src={showPass ?  eye_opened : eye_closed} 
+                <div><img 
+                src={!showPass ? eye_closed : eye_opened} 
                 alt="hide/show password"
                 className='cursor-pointer'
                 onClick={() => {
                     setShowPass(!showPass)
                 }}
-                />
+                /></div>
             }
         </div>
     )
